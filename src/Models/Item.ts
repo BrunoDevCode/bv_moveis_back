@@ -1,6 +1,5 @@
 import { Schema } from 'mongoose';
 import { prop, getModelForClass } from '@typegoose/typegoose';
-import { User } from './User';
 
 class ItemModel {
     @prop({ required: true })
