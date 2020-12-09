@@ -1,8 +1,8 @@
 import express from 'express';
 import cors from 'cors';
-import routes from './routes';
 import morgan from 'morgan';
 import { connect } from 'mongoose';
+import routes from './routes';
 import { MONGO_URI } from './config/env';
 
 connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
