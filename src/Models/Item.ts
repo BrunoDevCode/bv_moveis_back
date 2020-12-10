@@ -11,6 +11,9 @@ class ItemModel {
     @prop({ type: Schema.Types.ObjectId, ref: 'User' })
     public userID!: string;
 
+    @prop({ ref: ImageModel })
+    public images: Ref<ImageModel>[];
+
     @prop({ default: Date.now() })
     public created_at?: Date;
 }
