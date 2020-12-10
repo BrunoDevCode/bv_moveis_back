@@ -7,7 +7,7 @@
     "strictPropertyInitialization": false,
     "resolveJsonModule": true,
     "typeRoots": [
-      "./node_modules/@types",
+      "./node_modules/@types/**",
       "./src/@types/*.d.ts"
     ],
     "esModuleInterop": true,
@@ -15,7 +15,8 @@
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "removeComments": true
+    "removeComments": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "./src/**/*"
