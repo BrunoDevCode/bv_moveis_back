@@ -36,9 +36,11 @@
     "import/prefer-default-export": "off",
     "consistent-return": "off",
     "func-names": "off",
+    "no-unused-vars": "warn",
     "no-use-before-define": "warn",
     "no-underscore-dangle": "off",
-    "no-redeclare": "off"
+    "no-redeclare": "off",
+    "camelcase": "warn",
   },
   "settings": {
     "import/resolver": {
