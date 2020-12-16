@@ -3,7 +3,7 @@ import { sign } from 'jsonwebtoken';
 import { compare } from 'bcryptjs';
 // eslint-disable-next-line import/extensions
 import { secret } from '../../config/auth.json';
-import { User } from '../../Models/User';
+import User from '../../Models/User';
 
 export default class AuthController {
   async index(request: Request, response: Response, next: NextFunction) {
@@ -26,14 +26,14 @@ export default class AuthController {
         return;
       }
 
-      if (!await compare(password, findUser.password)) {
+      if (!await compare(password, findUser!.password)) {
         const error = new Error('Senha invalída, tente novamente');
         error.status = 401;
         next(error);
         return;
       }
 
-      findUser.password = null;
+      findUser!.password = '';
 
       const { _id } = findUser;
 
@@ -51,7 +51,7 @@ export default class AuthController {
     await User.create({
       email,
       name,
-      password
+      password,
     });
 
     return response.send();
