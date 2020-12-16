@@ -41,6 +41,7 @@
     "no-underscore-dangle": "off",
     "no-redeclare": "off",
     "camelcase": "warn",
+    "no-extra-semi": "warn"
   },
   "settings": {
     "import/resolver": {
