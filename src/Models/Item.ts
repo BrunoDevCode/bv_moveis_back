@@ -1,21 +1,38 @@
-import { Schema } from 'mongoose';
-import { prop, getModelForClass } from '@typegoose/typegoose';
+import { Schema, model } from 'mongoose';
 
-class ItemModel {
-    @prop({ required: true })
-    public title!: string;
+const ItemModel = new Schema({
+  title: {
+    type: String,
+    required: true,
+  },
 
-    @prop()
-    public description?: string;
+  description: String,
 
-    @prop({ type: Schema.Types.ObjectId, ref: 'User' })
-    public userID!: string;
+  stockCount: {
+    type: Number,
+    default: 0,
+  },
 
-    @prop({ ref: ImageModel })
-    public images: Ref<ImageModel>[];
+  isHomepage: {
+    type: Boolean,
+    default: false,
+  },
 
-    @prop({ default: Date.now() })
-    public created_at?: Date;
-}
+  images: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Image',
+  }],
 
-export const Item = getModelForClass(ItemModel);
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
+
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
+});
+
+export default model('Item', ItemModel);
