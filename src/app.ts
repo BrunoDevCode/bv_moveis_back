@@ -2,11 +2,11 @@ import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import { connect } from 'mongoose';
+import { resolve } from 'path';
 import routes from './routes';
 import { MONGO_URI } from './config/env';
-import { resolve } from 'path';
 
-connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
   .then(() => {
     console.log('> DB Connect sucessful');
   });
