@@ -17,6 +17,8 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
 
+app.use('/', (request, response) => return response.status(200).json({ Message: 'Hello, make login to use the application' }));
+app.use('/favico.ico', express.static(resolve(__dirname, 'favico.ico')));
 app.use('/files', express.static(resolve(__dirname, '..', 'tmp', 'uploads')));
 
 app.use(routes);
