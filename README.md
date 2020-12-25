@@ -1,14 +1,22 @@
-<h1 align='center'>BV Móveis Backend</h1>
+<h1 align='center'>BV Móveis - Backend</h1>
 
+## Description
 
-## Rotas do sistema
+<p>This API manage items and make upload of images in S3</p>
 
-- [x] /item/:itemID - Busca apenas um produto e seus dados.
-- [x] /items - Busca todos os items.
-- [x] /items/homepage - Buscar items que seram exibidos na homepage.
+## Routes
 
-- [x] /admin/login - Login de um único usuário.
-- [x] /admin/image/upload - Faz o upload de uma imagem.
-- [x] /admin/image/delete/:imageID - Faz o upload de uma imagem.
-- [x] /admin/item/create- Cria um novo produto.
-- [] /admin/item/delete/:itemID - Deletar um produto e suas imagens.
+- [x] /item/:itemID - Return one item with yours datas.
+- [x] /items - Return all items.
+- [x] /items/homepage - Return items to homepage of application.
+
+- [x] /admin/login - Make login of user.
+- [x] /admin/image/upload - Make upload of single image.
+- [x] /admin/image/delete/:imageID - Make delete of single image.
+- [x] /admin/item/create- Create a new item and return your ID.
+- [] /admin/item/delete/:itemID - Delete item and yours images.
+
+## Libs and dependencies :book:
+
+- [Mongoose](https://mongoosejs.com/)
+- [Amazon AWS](https://aws.amazon.com/pt/)
