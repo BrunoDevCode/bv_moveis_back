@@ -4,12 +4,18 @@ import Image from '../../Models/Image';
 import Item from '../../Models/Item';
 
 export default class ImagesController {
+  async show(request: Request, response: Response, next: NextFunction) {
+    const homepageImages = await Image.find({ isHomepage: true });
+
+    return response.status(200).json(homepageImages);
+  }
+
   async create(request: RequestFile, response: Response, next: NextFunction) {
     const {
       originalname: name, size, key, location: url = '',
     } = request.file;
 
-    const { itemID } = request.body;
+    const { itemID, isHomepage } = request.body;
 
     if (!await Item.findById(itemID)) {
       const error = new Error('Item not exists!');
@@ -25,6 +31,7 @@ export default class ImagesController {
         key,
         url,
         itemAssigned: itemID,
+        isHomepage,
       });
 
       await Item.findByIdAndUpdate(itemID, { $push: { images: imageSave._id } }, { new: true });

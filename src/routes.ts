@@ -22,6 +22,7 @@ const imagesController = new ImagesController();
 routes.get('/items/homepage', showItemsController.index);
 routes.get('/items', showItemsController.show);
 routes.get('/item/:itemID', showItemController.index);
+routes.get('/homepage/images', imagesController.show);
 
 routes.post('/admin/login', authController.index);
 routes.post('/admin/register', authController.create);

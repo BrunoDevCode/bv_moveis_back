@@ -5,7 +5,9 @@ import Item from '../../Models/Item';
 
 export default class ItemController {
   async create(request: RequestUser, response: Response, next: NextFunction) {
-    const { title, description, isHomepage } = request.body;
+    const {
+      title, description, isHomepage, isAvailable,
+    } = request.body;
     const { userID } = request;
 
     try {
@@ -20,6 +22,7 @@ export default class ItemController {
         title,
         description,
         isHomepage,
+        isAvailable,
         user: userID,
       });
 
@@ -29,12 +32,16 @@ export default class ItemController {
     }
   }
 
+  async update(request: RequestUser, response: Response, next: NextFunction) {
+    // In Construction
+  }
+
   async destroy(request: Request, response: Response, next: NextFunction) {
     const { itemID } = request.params;
     try {
-      // const { images } = await Item.findByIdAndRemove(itemID);
+      const deleteItem = await Item.findByIdAndRemove(itemID);
 
-      console.log(images);
+      console.log(deleteItem);
 
       // images.map((image) => Image.findByIdAndDelete(image._id));
 

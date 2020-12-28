@@ -6,7 +6,11 @@ export default class ShowItemsController {
     try {
       const homepageItems = await Item.find({ isHomepage: true })
         .limit(6)
-        .populate('images');
+        .populate({
+          path: 'images',
+          select: 'url',
+          options: { limit: 1 },
+        });
 
       return response.status(200).json(homepageItems);
     } catch (error) {

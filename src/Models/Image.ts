@@ -34,6 +34,11 @@ const ImageModel: Schema<ImageProps> = new Schema({
     required: true,
   },
 
+  isHomepage: {
+    type: Boolean,
+    default: false,
+  },
+
   createdAt: {
     type: Date,
     default: Date.now(),

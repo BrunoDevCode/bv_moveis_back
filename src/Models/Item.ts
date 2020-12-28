@@ -8,9 +8,9 @@ const ItemModel = new Schema({
 
   description: String,
 
-  stockCount: {
-    type: Number,
-    default: 0,
+  isAvailable: {
+    type: Boolean,
+    default: false,
   },
 
   isHomepage: {
