@@ -6,9 +6,10 @@
 
 ## Routes
 
+- [x] /homepage - Return items to homepage web
+
 - [x] /item/:itemID - Return one item with yours datas.
 - [x] /items - Return all items.
-- [x] /items/homepage - Return items to homepage of application.
 
 - [x] /admin/login - Make login of user.
 - [x] /admin/image/upload - Make upload of single image.

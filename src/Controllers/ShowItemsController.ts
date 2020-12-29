@@ -3,16 +3,19 @@ import Item from '../Models/Item';
 
 export default class ShowItemsController {
   async index(request: Request, response: Response, next: NextFunction) {
-    try {
-      const homepageItems = await Item.find({ isHomepage: true })
-        .limit(6)
-        .populate({
-          path: 'images',
-          select: 'url',
-          options: { limit: 1 },
-        });
+    const { itemID } = request.params;
 
-      return response.status(200).json(homepageItems);
+    try {
+      const item = await Item.findById(itemID).populate('images');
+
+      if (!item) {
+        const error = new Error('Item not exists!');
+        error.status = 409;
+        next(error);
+        return;
+      }
+
+      return response.status(200).json(item);
     } catch (error) {
       next(error);
     }
