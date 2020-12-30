@@ -9,6 +9,8 @@ import AuthController from './Controllers/AdminControllers/AuthController';
 import ItemController from './Controllers/AdminControllers/ItemController';
 import ImagesController from './Controllers/AdminControllers/ImagesController';
 
+import HomepageController from './Controllers/HomepageController';
+
 import TokenMiddleware from './Middleware/TokenMiddleware';
 
 const routes = Router();
@@ -18,6 +20,9 @@ const showItemController = new ShowItemController();
 const authController = new AuthController();
 const itemController = new ItemController();
 const imagesController = new ImagesController();
+const homepageController = new HomepageController();
+
+routes.get('/homepage', homepageController.index);
 
 routes.get('/items/homepage', showItemsController.index);
 routes.get('/items', showItemsController.show);
