@@ -3,8 +3,6 @@ import multer from 'multer';
 import multerConfig from './config/multer';
 
 import ShowItemsController from './Controllers/ShowItemsController';
-import ShowItemController from './Controllers/ShowItemController';
-
 import AuthController from './Controllers/AdminControllers/AuthController';
 import ItemController from './Controllers/AdminControllers/ItemController';
 import ImagesController from './Controllers/AdminControllers/ImagesController';
@@ -16,7 +14,6 @@ import TokenMiddleware from './Middleware/TokenMiddleware';
 const routes = Router();
 
 const showItemsController = new ShowItemsController();
-const showItemController = new ShowItemController();
 const authController = new AuthController();
 const itemController = new ItemController();
 const imagesController = new ImagesController();
@@ -24,10 +21,7 @@ const homepageController = new HomepageController();
 
 routes.get('/homepage', homepageController.index);
 
-routes.get('/items/homepage', showItemsController.index);
-routes.get('/items', showItemsController.show);
-routes.get('/item/:itemID', showItemController.index);
-routes.get('/homepage/images', imagesController.show);
+routes.get('/item/:itemID', showItemsController.index);
 
 routes.post('/admin/login', authController.index);
 routes.post('/admin/register', authController.create);

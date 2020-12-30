@@ -4,12 +4,6 @@ import Image from '../../Models/Image';
 import Item from '../../Models/Item';
 
 export default class ImagesController {
-  async show(request: Request, response: Response, next: NextFunction) {
-    const homepageImages = await Image.find({ isHomepage: true });
-
-    return response.status(200).json(homepageImages);
-  }
-
   async create(request: RequestFile, response: Response, next: NextFunction) {
     const {
       originalname: name, size, key, location: url = '',
