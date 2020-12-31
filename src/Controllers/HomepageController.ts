@@ -15,12 +15,7 @@ export default class HomepageController {
 
       const images = await Image.find({ isHomepage: true });
 
-      const data = {
-        items,
-        images,
-      };
-
-      return response.status(200).json(data);
+      return response.status(200).json({ items, images });
     } catch (error) {
       next(error);
     }
