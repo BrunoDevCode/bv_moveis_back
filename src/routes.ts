@@ -19,6 +19,10 @@ const itemController = new ItemController();
 const imagesController = new ImagesController();
 const homepageController = new HomepageController();
 
+routes.get('/', (req, res) => {
+  res.redirect('/items');
+});
+
 routes.get('/homepage', homepageController.index);
 
 routes.get('/item/:itemID', showItemsController.index);
