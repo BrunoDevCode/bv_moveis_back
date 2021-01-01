@@ -31,7 +31,6 @@ const ImageModel: Schema<ImageProps> = new Schema({
   itemAssigned: {
     type: Schema.Types.ObjectId,
     ref: 'Item',
-    required: true,
   },
 
   isHomepage: {
