@@ -25,6 +25,8 @@ routes.get('/', (req, res) => {
 
 routes.get('/homepage', homepageController.index);
 
+routes.get('/items', showItemsController.show);
+
 routes.get('/item/:itemID', showItemsController.index);
 
 routes.post('/admin/login', authController.index);
