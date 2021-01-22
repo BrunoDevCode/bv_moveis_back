@@ -4,12 +4,33 @@ import Image from '../../Models/Image';
 import Item from '../../Models/Item';
 
 export default class ImagesController {
+  async index(request: RequestFile, response: Response, next: NextFunction) {
+    const { itemID } = request.params;
+
+    if (!itemID) {
+      const error = new Error('ItemID is not provided!');
+      error.status = 409;
+      next(error);
+    }
+
+    const images = await Image.find({ itemAssigned: itemID });
+
+    return response.status(200).json(images);
+  }
+
   async create(request: RequestFile, response: Response, next: NextFunction) {
     const {
       originalname: name, size, key, location: url = '',
     } = request.file;
 
     const { itemID, isHomepage } = request.body;
+
+    if (!itemID) {
+      const error = new Error('ItemID is not provided!');
+      error.status = 409;
+      next(error);
+      return;
+    }
 
     if (!await Item.findById(itemID)) {
       const error = new Error('Item not exists!');
