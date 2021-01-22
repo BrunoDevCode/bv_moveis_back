@@ -7,7 +7,7 @@ import { APP_URL, BUCKET_NAME, STORAGE_TYPE } from '../config/env';
 
 const s3 = new S3();
 
-interface ImageProps {
+export interface ImageProps {
   name: string;
   size: number;
   key: string;
