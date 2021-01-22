@@ -1,6 +1,18 @@
 import { Schema, model } from 'mongoose';
+import { ImageProps } from './Image';
 
-const ItemModel = new Schema({
+export interface IItem {
+  _id: string;
+  name: string;
+  description: string;
+  isHomepage: Boolean;
+  isAvailable: Boolean;
+  images?: ImageProps[] | null;
+  user: string;
+  createdAt?: Date;
+}
+
+const ItemModel: Schema<IItem> = new Schema({
   title: {
     type: String,
     required: true,
