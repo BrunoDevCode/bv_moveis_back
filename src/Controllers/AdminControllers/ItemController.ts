@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { RequestUser } from '../../@types/requestUser';
-// import Image from '../../Models/Image';
-import Item from '../../Models/Item';
+import Image from '../../Models/Image';
+import Item, { IItem } from '../../Models/Item';
 
 export default class ItemController {
   async create(request: RequestUser, response: Response, next: NextFunction) {
@@ -33,25 +33,37 @@ export default class ItemController {
   }
 
   async update(request: RequestUser, response: Response, next: NextFunction) {
-    // In Construction
+    const { itemID } = request.params;
+    const {
+      name, description, isHomepage, isAvailable,
+    } = request.body;
+
+    try {
+      await Item.findByIdAndUpdate(itemID, {
+        name,
+        description,
+        isHomepage,
+        isAvailable,
+      });
+
+      return response.status(203).send();
+    } catch (error) {
+      next(error);
+    }
   }
 
   async destroy(request: Request, response: Response, next: NextFunction) {
     const { itemID } = request.params;
     try {
-      const deleteItem = await Item.findByIdAndRemove(itemID);
+      const item = <IItem> await Item.findById(itemID);
 
-      console.log(deleteItem);
+      if (item!.images!.length > 0) {
+        item!.images!.forEach(async (image) => {
+          await Image.findByIdAndRemove(image._id);
+        });
+      }
 
-      // images.map((image) => Image.findByIdAndDelete(image._id));
-
-      // Apagar todas as images do item que foi apagado
-
-      // if (images.length !== 0) {
-      //   for (const image of images) {
-      //     await Image.findByIdAndDelete(image._id);
-      //   }
-      // }
+      await Item.findByIdAndRemove(itemID);
 
       return response.status(200).send();
     } catch (error) {
