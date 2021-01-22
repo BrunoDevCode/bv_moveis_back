@@ -7,10 +7,10 @@ export default interface RequestFile extends Request {
   }
 
   file: {
-    originalname: string;
+    originalname?: string;
     name: string;
     key: string;
     location: string;
     size: number;
   }
-}
+};
