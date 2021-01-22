@@ -29,6 +29,8 @@ routes.get('/items', showItemsController.show);
 
 routes.get('/item/:itemID', showItemsController.index);
 
+routes.get('/images/:itemID', imagesController.index);
+
 routes.post('/admin/login', authController.index);
 routes.post('/admin/register', authController.create);
 
@@ -38,5 +40,6 @@ routes.post('/admin/image/upload', TokenMiddleware, multer(multerConfig).single(
 routes.delete('/admin/image/delete/:imageID', TokenMiddleware, imagesController.destroy);
 
 routes.delete('/admin/item/delete/:itemID', TokenMiddleware, itemController.destroy);
+routes.put('/admin/:itemID/update', TokenMiddleware, itemController.update);
 
 export default routes;
