@@ -2,8 +2,6 @@ version: '2'
 
 services:
   app:
-    depedens_on:
-      - reverse-proxy
     labels: 
       - "traefik.enable=true"
       - "traefik.frontend.rule=Host:api.bvmoveisrusticos.com.br"
