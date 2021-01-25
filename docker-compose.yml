@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 services:
   app:
@@ -6,3 +6,4 @@ services:
     ports:
       - "3000:3000"
     command: yarn start
+    env_file: ./.env
