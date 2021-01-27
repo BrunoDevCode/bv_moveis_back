@@ -1,7 +1,7 @@
-FROM node:14-alpine
+FROM node:lts-alpine
 
 WORKDIR /usr/app
-COPY package.json yarn.lock docker-compose.yml production.yml ./
+COPY package.json yarn.lock ./
 
 RUN yarn
 

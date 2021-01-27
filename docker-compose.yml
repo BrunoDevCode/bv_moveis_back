@@ -1,16 +1,24 @@
-version: '2'
+version: '3.9'
 
 services:
-  app:
+  bv-back:
+    # image: brunodevcode/bv-back:latest
     build: .
+    restart: always
+    networks:
+      - web
+      - default
     ports:
-      - "3000:3000"
+      - "3000"
+    labels:
+      - "traefik.docker.network=web"
+      - "traefik.enable=true"
+      - "traefik.basic.frontend.rule=Host:api.bvmoveisrusticos.com.br"
+      - "traefik.basic.port=3000"
+      - "traefik.basic.protocol=http"
     command: yarn start
-    environment:
-      - PORT=3000
-      - STORAGE_TYPE=s3
-      - MONGO_URI=mongodb+srv://bv_moveis:BjwPMGscAtAOZjXh@noding.hfnrk.mongodb.net/bv_moveis?retryWrites=true&w=majority
-      - BUCKET_NAME=bv-moveis
-      - AWS_ACCESS_KEY_ID=AKIA3T4NEEWXA7HRXH43
-      - AWS_SECRET_ACCESS_KEY=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
-      - AWS_DEFAULT_REGION=sa-east-1
+    env_file: ./.env
+
+networks:
+  web:
+    external: true
