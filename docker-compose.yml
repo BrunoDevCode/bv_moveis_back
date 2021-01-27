@@ -2,8 +2,7 @@ version: '3.9'
 
 services:
   bv-back:
-    # image: brunodevcode/bv-back:latest
-    build: .
+    image: brunodevcode/bv-back:latest
     restart: always
     networks:
       - web
