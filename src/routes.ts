@@ -27,19 +27,17 @@ routes.get('/homepage', homepageController.index);
 
 routes.get('/items', showItemsController.show);
 
-routes.get('/item/:itemID', showItemsController.index);
-
 routes.get('/images/:itemID', imagesController.index);
+routes.post('/admin/image/upload', TokenMiddleware, multer(multerConfig).single('file'), imagesController.create);
+routes.put('/admin/image/update/:imageID', TokenMiddleware, imagesController.update);
+routes.delete('/admin/image/delete/:imageID', TokenMiddleware, imagesController.destroy);
+
+routes.get('/item/:itemID', showItemsController.index);
+routes.post('/admin/item/create', TokenMiddleware, itemController.create);
+routes.put('/admin/:itemID/update', TokenMiddleware, itemController.update);
+routes.delete('/admin/item/delete/:itemID', TokenMiddleware, itemController.destroy);
 
 routes.post('/admin/login', authController.index);
 routes.post('/admin/register', authController.create);
-
-routes.post('/admin/item/create', TokenMiddleware, itemController.create);
-
-routes.post('/admin/image/upload', TokenMiddleware, multer(multerConfig).single('file'), imagesController.create);
-routes.delete('/admin/image/delete/:imageID', TokenMiddleware, imagesController.destroy);
-
-routes.delete('/admin/item/delete/:itemID', TokenMiddleware, itemController.destroy);
-routes.put('/admin/:itemID/update', TokenMiddleware, itemController.update);
 
 export default routes;

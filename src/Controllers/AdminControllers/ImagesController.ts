@@ -57,6 +57,20 @@ export default class ImagesController {
     }
   }
 
+  async update(request: RequestFile, response: Response, next: NextFunction) {
+    const { isHomepage } = request.body;
+    const { imageID } = request.params;
+
+    try {
+      await Image.findByIdAndUpdate(imageID, { $set: { isHomepage } });
+
+      const image = await Image.findOne({ _id: imageID });
+      return response.status(200).json(image);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   async destroy(request: Request, response: Response, next: NextFunction) {
     const { imageID } = request.params;
 
