@@ -35,12 +35,12 @@ export default class ItemController {
   async update(request: RequestUser, response: Response, next: NextFunction) {
     const { itemID } = request.params;
     const {
-      name, description, isHomepage, isAvailable,
+      title, description, isHomepage, isAvailable,
     } = request.body;
 
     try {
       await Item.findByIdAndUpdate(itemID, {
-        name,
+        title,
         description,
         isHomepage,
         isAvailable,

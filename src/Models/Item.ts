@@ -3,7 +3,7 @@ import { ImageProps } from './Image';
 
 export interface IItem {
   _id: string;
-  name: string;
+  title: string;
   description: string;
   isHomepage: Boolean;
   isAvailable: Boolean;
