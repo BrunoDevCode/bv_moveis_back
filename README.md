@@ -2,7 +2,8 @@
 
 ## Description
 
-<p>This API manage items and make upload of images in S3</p>
+<p>This API manage items and make upload of images in S3.</p>
+<p>Currently running on amazon EC2 using docker-compose, as reverse-proxy using traefik V1.7 and for SSL Let's Encrypt.</p>
 
 ## Routes
 
