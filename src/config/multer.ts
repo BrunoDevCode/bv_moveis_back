@@ -4,9 +4,9 @@ import { randomBytes } from 'crypto';
 import aws from 'aws-sdk';
 import multerS3 from 'multer-s3';
 
-import { BUCKET_NAME, STORAGE_TYPE } from '../config/env';
+import { BUCKET_NAME, STORAGE_TYPE } from './env';
 
-const MAX_SIZE = 2 * 1024 * 1024;
+const MAX_SIZE = 5 * 1024 * 1024;
 
 const storageTypes = {
   local: multer.diskStorage({
@@ -39,7 +39,7 @@ const storageTypes = {
       });
     },
   }),
-}
+};
 
 export default {
   dest: resolve(__dirname, '..', '..', 'tmp', 'uploads'),
@@ -52,7 +52,7 @@ export default {
       'image/jpeg',
       'image/pjpeg',
       'image/png',
-      'image/gif'
+      'image/gif',
     ];
 
     if (allowedMimes.includes(file.mimetype)) {
