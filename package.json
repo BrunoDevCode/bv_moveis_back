@@ -10,6 +10,8 @@
     "dev": "tsnd --transpile-only --ignore-watch node_modules --respawn --no-notify src/server.ts"
   },
   "dependencies": {
+    "@sentry/node": "^6.0.4",
+    "@sentry/tracing": "^6.0.4",
     "aws-sdk": "^2.807.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
