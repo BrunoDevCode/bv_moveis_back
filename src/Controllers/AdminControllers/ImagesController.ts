@@ -23,7 +23,9 @@ export default class ImagesController {
       originalname: name, size, key, location: url = '',
     } = request.file;
 
-    const { itemID, isHomepage } = request.body;
+    const { itemID } = request.params;
+
+    const { isHomepage } = request.body;
 
     if (!itemID) {
       const error = new Error('ItemID is not provided!');

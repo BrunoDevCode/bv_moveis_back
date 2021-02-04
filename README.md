@@ -16,7 +16,7 @@
 - [x] /admin/image/upload - Make upload of single image.
 - [x] /admin/image/delete/:imageID - Make delete of single image.
 - [x] /admin/item/create- Create a new item and return your ID.
-- [] /admin/item/delete/:itemID - Delete item and yours images.
+- [x] /admin/item/delete/:itemID - Delete item and yours images.
 
 ## Libs and dependencies :book:
 

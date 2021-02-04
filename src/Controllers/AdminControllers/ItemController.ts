@@ -18,7 +18,7 @@ export default class ItemController {
         return;
       }
 
-      const { _id } = await Item.create({
+      const createdItem = await Item.create({
         title,
         description,
         isHomepage,
@@ -26,7 +26,9 @@ export default class ItemController {
         user: userID,
       });
 
-      return response.status(201).json({ itemID: _id });
+      const itemID = createdItem.id as String;
+
+      return response.status(201).json({ itemID });
     } catch (error) {
       next(error);
     }

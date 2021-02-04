@@ -28,7 +28,7 @@ routes.get('/homepage', homepageController.index);
 routes.get('/items', showItemsController.show);
 
 routes.get('/images/:itemID', imagesController.index);
-routes.post('/admin/image/upload', TokenMiddleware, multer(multerConfig).single('file'), imagesController.create);
+routes.post('/admin/image/upload/:itemID', TokenMiddleware, multer(multerConfig).single('file'), imagesController.create);
 routes.put('/admin/image/update/:imageID', TokenMiddleware, imagesController.update);
 routes.delete('/admin/image/delete/:imageID', TokenMiddleware, imagesController.destroy);
 
